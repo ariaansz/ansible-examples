@@ -1,0 +1,14 @@
+---
+# This playbook removes IIS from Windows hosts
+
+- name: Uninstall IIS
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Uninstall IIS
+      win_feature:
+        name: "Web-Server"
+        state: absent
+        restart: yes
+        include_sub_features: yes
+        include_management_tools: yes
